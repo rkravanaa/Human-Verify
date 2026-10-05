@@ -140,29 +140,9 @@ These signals should not be interpreted as proof of:
 AI-generated content is not automatically fraudulent, and a human-created image is not automatically truthful.
 Architecture
 The current prototype uses a modular frontend and backend architecture.
-                         HUMAN VERIFY
-                              │
-                              ▼
-                   ┌─────────────────────┐
-                   │  Verification Hub   │
-                   └──────────┬──────────┘
-                              │
-             ┌────────────────┼────────────────┐
-             │                │                │
-             ▼                ▼                ▼
-       Live Presence    Voice Response   Media Analysis
-             │                │                │
-             ▼                ▼                ▼
-        MediaPipe        Web Audio        Sightengine
-        Face Analysis    Speech APIs      GenAI API
-             │                │                │
-             └────────────────┼────────────────┘
-                              ▼
-                   Verification Evidence
-                              │
-                              ▼
-                    Developer Integration
 
+
+       
 Technology Stack
 Frontend
 - Vite
@@ -186,75 +166,6 @@ Voice
 Browser speech recognition and Web Audio APIs are used for the current MVP.
 Media
 Sightengine's GenAI image detection API is used for AI-generation likelihood analysis.
-Project Structure
-human-verify/
-│
-├── backend/
-│   ├── app.py
-│   ├── requirements.txt
-│   ├── README.md
-│   └── .env.example
-│
-├── public/
-│
-├── src/
-│   ├── assets/
-│   │
-│   ├── features/
-│   │   ├── liveness/
-│   │   │   ├── liveness.js
-│   │   │   └── liveness.css
-│   │   │
-│   │   ├── media/
-│   │   │   ├── media.js
-│   │   │   └── media.css
-│   │   │
-│   │   ├── text/
-│   │   │
-│   │   ├── verify/
-│   │   │   ├── verify.js
-│   │   │   └── verify.css
-│   │   │
-│   │   └── voice/
-│   │       ├── voice.js
-│   │       ├── voice.css
-│   │       ├── audio-capture.js
-│   │       ├── audio-capture.css
-│   │       ├── audio-analysis.js
-│   │       ├── audio-analysis.css
-│   │       ├── log-mel.js
-│   │       └── log-mel.css
-│   │
-│   ├── main.js
-│   └── style.css
-│
-├── docs/
-│   └── images/
-│       ├── hero.png
-│       ├── problem.png
-│       ├── verification-hub.png
-│       ├── liveness-success.png
-│       ├── voice-success.png
-│       └── media-analysis-result.png
-│
-├── index.html
-├── verify.html
-├── liveness-test.html
-├── audio-test.html
-├── media-test.html
-├── text-test.html
-├── voice-test.html
-├── voice-audio-test.html
-├── voice-analysis-test.html
-├── voice-mel-test.html
-│
-├── .gitignore
-├── .env.example
-├── LICENSE
-├── README.md
-├── package.json
-├── package-lock.json
-└── vite.config.js
 
 Running the Project Locally
 Requirements
