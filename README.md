@@ -142,6 +142,7 @@ The Media Analysis module allows users to upload an image and obtain an AI-gener
   <img src="docs/images/media-analysis-result.png" alt="Human Verify media analysis result" width="850">
 </p>
 
+```
 Processing pipeline
 Image Upload
       ↓
@@ -152,7 +153,7 @@ Sightengine GenAI Detection
 AI-generation likelihood
       ↓
 Evidence shown to user
-
+```
 The current prototype uses a Flask backend to communicate with the detection service without exposing API credentials to the browser.
 Evidence, not certainty
 The detector output is treated as an evidence signal.
