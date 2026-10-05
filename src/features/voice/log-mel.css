@@ -1,0 +1,315 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  background: #f5f5f1;
+  color: #111;
+}
+
+body {
+  min-height: 100vh;
+}
+
+button {
+  font: inherit;
+}
+
+.mel-page {
+  min-height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 40px 20px;
+}
+
+.mel-card {
+  width: min(960px, 100%);
+
+  border: 1px solid #d4d4cf;
+
+  background: #fff;
+}
+
+.mel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 14px 18px;
+
+  border-bottom: 1px solid #d4d4cf;
+
+  font-size: 10px;
+  font-weight: 700;
+
+  letter-spacing: 0.14em;
+
+  color: #777771;
+}
+
+.mel-header span:last-child {
+  color: #111;
+}
+
+.mel-content {
+  padding: 42px;
+}
+
+.eyebrow {
+  font-size: 10px;
+  font-weight: 700;
+
+  letter-spacing: 0.14em;
+
+  color: #777771;
+}
+
+h1 {
+  margin: 12px 0 0;
+
+  font-size: clamp(36px, 7vw, 64px);
+
+  line-height: 0.98;
+
+  letter-spacing: -0.05em;
+}
+
+.description {
+  max-width: 650px;
+
+  margin: 20px 0 30px;
+
+  font-size: 15px;
+
+  line-height: 1.6;
+
+  color: #686862;
+}
+
+.record-box,
+.spectrogram-box {
+  border: 1px solid #d4d4cf;
+
+  padding: 22px;
+}
+
+.spectrogram-box {
+  margin-top: 20px;
+}
+
+.section-label {
+  font-size: 10px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.12em;
+
+  color: #777771;
+}
+
+.record-status {
+  margin-top: 12px;
+
+  font-size: 13px;
+
+  color: #686862;
+}
+
+.record-time {
+  margin-top: 10px;
+
+  font-size: 36px;
+
+  font-weight: 700;
+
+  letter-spacing: -0.04em;
+}
+
+.primary-button {
+  width: 100%;
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  margin-top: 20px;
+
+  padding: 15px 18px;
+
+  border: 1px solid #111;
+
+  background: #111;
+
+  color: #fff;
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.primary-button:hover {
+  background: #fff;
+  color: #111;
+}
+
+.primary-button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.spectrogram-header {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+}
+
+.analysis-status {
+  font-size: 10px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.1em;
+
+  color: #777771;
+}
+
+.analysis-status.ready {
+  color: #16733a;
+}
+
+canvas {
+  display: block;
+
+  width: 100%;
+
+  height: auto;
+
+  margin-top: 16px;
+
+  border: 1px solid #d4d4cf;
+
+  background: #f8f8f5;
+}
+
+.axis-labels {
+  display: flex;
+
+  justify-content: space-between;
+
+  margin-top: 8px;
+
+  font-size: 9px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.08em;
+
+  color: #888880;
+}
+
+.metrics {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, 1fr);
+
+  margin-top: 20px;
+
+  border-top: 1px solid #d4d4cf;
+
+  border-left: 1px solid #d4d4cf;
+}
+
+.metric {
+  padding: 16px;
+
+  border-right: 1px solid #d4d4cf;
+
+  border-bottom: 1px solid #d4d4cf;
+}
+
+.metric span {
+  display: block;
+
+  font-size: 10px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.08em;
+
+  color: #777771;
+}
+
+.metric strong {
+  display: block;
+
+  margin-top: 10px;
+
+  font-size: 20px;
+
+  letter-spacing: -0.03em;
+}
+
+.audio-player {
+  width: 100%;
+
+  margin-top: 20px;
+}
+
+.analysis-result {
+  margin-top: 14px;
+
+  font-size: 12px;
+
+  color: #686862;
+}
+
+.technical-note {
+  margin-top: 20px;
+
+  font-size: 11px;
+
+  line-height: 1.5;
+
+  color: #8a8a84;
+}
+
+@media (max-width: 700px) {
+
+  .mel-page {
+    padding: 20px;
+  }
+
+  .mel-content {
+    padding: 28px 20px;
+  }
+
+  .metrics {
+    grid-template-columns:
+      repeat(2, 1fr);
+  }
+
+}

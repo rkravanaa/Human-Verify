@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Human Verify — AI-generated image analysis." />
+    <title>Human Verify — Media Analysis</title>
+  </head>
+
+  <body>
+    <header class="media-navbar">
+      <a href="./verify.html" class="media-logo">HUMAN VERIFY</a>
+      <a href="./verify.html" class="back-link">← Back to verification</a>
+    </header>
+
+    <main class="media-page">
+      <section class="media-intro">
+        <p class="eyebrow">IMAGE ANALYSIS</p>
+        <h1>Is this image ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎  <span>AI-generated?</span></h1>
+        <p>
+          Upload an image and the detector will estimate how strongly the
+          image shows evidence associated with AI generation.
+        </p>
+      </section>
+
+      <section class="media-panel">
+        <div class="panel-top">
+          <span>MEDIA VERIFICATION SESSION</span>
+          <span id="session-status">● READY</span>
+        </div>
+
+        <div class="media-stage">
+          <div class="upload-area">
+            <div class="upload-label">IMAGE INPUT</div>
+
+            <label id="drop-zone" class="drop-zone" for="image-input">
+              <input id="image-input" type="file" accept="image/*" hidden />
+              <div class="upload-icon">＋</div>
+              <strong>Drop an image here</strong>
+              <span>or click to choose a file</span>
+              <small>PNG, JPG, JPEG, WEBP • image files only</small>
+            </label>
+
+            <div id="file-info" class="file-info" hidden>
+              <div>
+                <span>SELECTED FILE</span>
+                <strong id="file-name">—</strong>
+              </div>
+              <div>
+                <span>SIZE</span>
+                <strong id="file-size">—</strong>
+              </div>
+              <div>
+                <span>TYPE</span>
+                <strong id="file-type">—</strong>
+              </div>
+            </div>
+
+            <button id="analyze-button" class="primary-button" disabled>
+              Analyze image →
+            </button>
+            <button id="clear-button" class="secondary-button" hidden>
+              Clear image
+            </button>
+          </div>
+
+          <div class="preview-area">
+            <div class="preview-label">PREVIEW</div>
+            <div id="preview-frame" class="preview-frame empty">
+              <div class="preview-placeholder">
+                <span>IMAGE PREVIEW</span>
+                <small>Your selected image will appear here.</small>
+              </div>
+              <img id="image-preview" alt="Selected image preview" hidden />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="result-section">
+        <div class="result-heading">
+          <p class="eyebrow">DETECTOR OUTPUT</p>
+          <h2>Evidence, not certainty.</h2>
+          <p>
+            The production detector will return an AI-generation likelihood
+            from 0–100%. The interface separates that score from the result
+            label so the system does not present a probabilistic detector as
+            proof of authenticity.
+          </p>
+        </div>
+
+        <div class="result-card" id="result-card">
+          <div class="result-topline">
+            <span>AI-GENERATION LIKELIHOOD</span>
+            <span id="result-state">NOT ANALYZED</span>
+          </div>
+
+          <div class="score-row">
+            <strong id="ai-score">—</strong>
+            <span id="score-label">Waiting for an image.</span>
+          </div>
+
+          <div class="score-track">
+            <div id="score-bar"></div>
+          </div>
+
+          <div class="interpretation-grid">
+            <div>
+              <span>0–30%</span>
+              <strong>LIKELY HUMAN-CREATED</strong>
+            </div>
+            <div>
+              <span>30–70%</span>
+              <strong>INCONCLUSIVE</strong>
+            </div>
+            <div>
+              <span>70–100%</span>
+              <strong>LIKELY AI-GENERATED</strong>
+            </div>
+          </div>
+
+          <div id="detector-message" class="detector-message">
+            Detector connection is not configured yet. No score is being
+            invented or simulated.
+          </div>
+        </div>
+      </section>
+
+      <section class="media-note">
+        <span>01</span>
+        <p>
+          AI-image detection is probabilistic. Compression, editing,
+          screenshots, image style and newer generation models can affect
+          detector performance. A detector score is an evidence signal, not
+          proof that an image is truthful or that a person created it.
+        </p>
+      </section>
+    </main>
+
+    <footer class="media-footer">
+      <span>HUMAN VERIFY</span>
+      <span>Image analysis layer</span>
+    </footer>
+
+    <script type="module" src="./src/features/media/media.js"></script>
+  </body>
+</html>

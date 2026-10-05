@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Human Verify — live human presence verification."
+    />
+    <title>Human Verify — Live Presence</title>
+  </head>
+
+  <body>
+    <header class="liveness-navbar">
+      <a href="./verify.html" class="liveness-logo">HUMAN VERIFY</a>
+      <a href="./verify.html" class="back-link">← Back to verification</a>
+    </header>
+
+    <main>
+<section class="verification-section" id="verify">
+
+      <div class="section-heading">
+        <p class="eyebrow">INTERACTIVE VERIFICATION</p>
+
+        <h2>
+          Trust through
+          <span>evidence.</span>
+        </h2>
+      </div>
+
+      <div class="verification-panel">
+
+        <div class="panel-top">
+          <span>VERIFICATION SESSION</span>
+          <span class="session-status">
+            ● READY
+          </span>
+          
+        </div>
+
+        <div class="verification-stage">
+
+          <div class="camera-placeholder">
+
+            <video
+              id="camera-preview"
+              class="camera-preview"
+              autoplay
+              playsinline
+              muted
+            ></video>
+
+            <div id="camera-placeholder-content">
+              <div class="camera-frame">
+                CAMERA
+              </div>
+
+              <p>
+                Camera access will be requested when verification begins.
+              </p>
+            </div>
+
+          </div>
+
+          <div class="verification-info">
+
+            <div class="step">
+              <span>01</span>
+              <div>
+                <strong>Live presence</strong>
+                <small id="camera-status">
+                  Camera not connected
+                </small>
+              </div>
+            </div>
+
+            <div class="step">
+              <span>02</span>
+              <div>
+                <strong>Challenge response</strong>
+                <small id="challenge-status">
+                  Waiting for camera
+                </small>
+              </div>
+            </div>
+
+            <div class="step">
+              <span>03</span>
+              <div>
+                <strong>Verification signals</strong>
+                <small id="verification-status">
+                  Waiting for camera
+                </small>
+              </div>
+            </div>
+
+            <div class="liveness-panel">
+              <div class="liveness-header">
+                <span>LIVE LIVENESS CHECK</span>
+                <span id="liveness-progress">0 / 2</span>
+              </div>
+
+              <div class="liveness-challenge">
+                <div class="challenge-label">CURRENT CHALLENGE</div>
+
+                <div id="liveness-instruction">
+                  Waiting for face...
+                </div>
+
+                <div class="liveness-timer">
+                  <span id="liveness-countdown">7</span>
+                  <span>SEC</span>
+                </div>
+
+                <div id="liveness-result">
+                  Verification has not started
+                </div>
+
+                <button
+                  type="button"
+                  id="retry-liveness-button"
+                  class="retry-liveness-button"
+                >
+                  Try again
+                </button>
+              </div>
+
+            <div class="camera-controls">
+
+              <button class="verify-button" id="camera-button">
+                Allow camera & continue
+                <span>→</span>
+              </button>
+
+              <button class="stop-camera-button" id="stop-camera-button" disabled>
+                Stop camera
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+    </main>
+
+    <script type="module" src="./src/features/liveness/liveness.js"></script>
+  </body>
+</html>

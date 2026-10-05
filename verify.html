@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Human Verify — choose a verification layer."
+    />
+    <title>Human Verify — Verification</title>
+  </head>
+
+  <body>
+    <header class="verify-navbar">
+      <a href="./index.html" class="verify-logo">HUMAN VERIFY</a>
+
+      <a href="./index.html" class="back-link">
+        ← Home
+      </a>
+    </header>
+
+    <main class="verify-page">
+      <section class="verify-intro">
+        <p class="eyebrow">VERIFICATION SESSION</p>
+
+        <h1>
+          Choose your
+          <span>verification layer.</span>
+        </h1>
+
+        <p class="intro-copy">
+          Select a verification test. Each layer evaluates a different
+          signal and runs independently.
+        </p>
+      </section>
+
+      <section class="verification-grid" aria-label="Verification tests">
+
+        <a class="verification-card" href="./liveness-test.html">
+          <div class="card-top">
+            <span class="card-number">01</span>
+            <span class="card-status">AVAILABLE</span>
+          </div>
+
+          <div class="card-icon">◌</div>
+
+          <div class="card-content">
+            <h2>Live presence</h2>
+            <p>
+              Use randomized face movement and blink challenges to verify
+              live human presence in front of the camera.
+            </p>
+          </div>
+
+          <div class="card-action">
+            Start test <span>→</span>
+          </div>
+        </a>
+
+        <a class="verification-card" href="./audio-test.html">
+          <div class="card-top">
+            <span class="card-number">02</span>
+            <span class="card-status">AVAILABLE</span>
+          </div>
+
+          <div class="card-icon">◒</div>
+
+          <div class="card-content">
+            <h2>Audio response</h2>
+            <p>
+              Read a randomly selected phrase aloud within a timed
+              challenge-response test.
+            </p>
+          </div>
+
+          <div class="card-action">
+            Start test <span>→</span>
+          </div>
+        </a>
+
+        <a class="verification-card" href="./media-test.html">
+          <div class="card-top">
+            <span class="card-number">03</span>
+            <span class="card-status">AVAILABLE</span>
+          </div>
+
+          <div class="card-icon">□</div>
+
+          <div class="card-content">
+            <h2>Media analysis</h2>
+            <p>
+              Analyze an image or video for signals associated with
+              manipulation or synthetic generation.
+            </p>
+          </div>
+
+          <div class="card-action">
+            Open test <span>→</span>
+          </div>
+        </a>
+
+        <a class="verification-card" href="./text-test.html">
+          <div class="card-top">
+            <span class="card-number">04</span>
+            <span class="card-status">COMING SOON</span>
+          </div>
+
+          <div class="card-icon">Aa</div>
+
+          <div class="card-content">
+            <h2>Text analysis</h2>
+            <p>
+              Analyze written content for indicators associated with
+              machine-generated text.
+            </p>
+          </div>
+
+          <div class="card-action">
+            Open test <span>→</span>
+          </div>
+        </a>
+
+      </section>
+
+      <section class="verification-note">
+        <span>01—04</span>
+        <p>
+          Verification layers are independent. A result from one test does
+          not automatically establish identity or authenticity across every
+          other layer.
+        </p>
+      </section>
+    </main>
+
+    <footer class="verify-footer">
+      <span>HUMAN VERIFY</span>
+      <span>Human presence. Verified.</span>
+    </footer>
+
+    <script type="module" src="./src/features/verify/verify.js"></script>
+  </body>
+</html>

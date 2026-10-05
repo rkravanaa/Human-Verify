@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+
+  <title>Human Verify — Audio Capture Test</title>
+</head>
+
+<body>
+
+  <main class="audio-test-page">
+
+    <section class="audio-card">
+
+      <div class="audio-header">
+        <span>HUMAN VERIFY</span>
+        <span>AUDIO TEST</span>
+      </div>
+
+      <div class="audio-content">
+
+        <div class="eyebrow">
+          MICROPHONE CAPTURE
+        </div>
+
+        <h1>
+          Capture your voice.
+        </h1>
+
+        <p class="description">
+          This isolated test checks whether the browser
+          can access, monitor and record microphone audio.
+        </p>
+
+
+        <div class="signal-box">
+
+          <div class="signal-header">
+            <span>MICROPHONE SIGNAL</span>
+
+            <span
+              id="mic-status"
+              class="status"
+            >
+              NOT CONNECTED
+            </span>
+          </div>
+
+
+          <div class="signal-meter">
+
+            <div
+              id="signal-level"
+              class="signal-level"
+            ></div>
+
+          </div>
+
+
+          <div
+            id="signal-text"
+            class="signal-text"
+          >
+            Microphone is not active.
+          </div>
+
+        </div>
+
+
+        <div class="record-box">
+
+          <div class="record-label">
+            RECORDING
+          </div>
+
+          <div
+            id="record-time"
+            class="record-time"
+          >
+            00:00
+          </div>
+
+          <div
+            id="record-status"
+            class="record-status"
+          >
+            Ready to record.
+          </div>
+
+        </div>
+
+
+        <div class="button-row">
+
+          <button
+            id="start-mic-button"
+            class="primary-button"
+            type="button"
+          >
+            Start microphone
+            <span>→</span>
+          </button>
+
+          <button
+            id="record-button"
+            class="secondary-button"
+            type="button"
+            disabled
+          >
+            Record 5 seconds
+          </button>
+
+        </div>
+
+
+        <div
+          id="recording-result"
+          class="recording-result"
+        >
+          No recording available.
+        </div>
+
+
+        <audio
+          id="audio-player"
+          controls
+          class="audio-player"
+          style="display: none;"
+        ></audio>
+
+
+        <div class="technical-note">
+          Audio is captured locally by this browser test.
+          This test does not perform voice spoof detection.
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <script
+    type="module"
+    src="/src/features/voice/audio-capture.js"
+  ></script>
+
+</body>
+
+</html>

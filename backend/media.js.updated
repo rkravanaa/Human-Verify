@@ -1,0 +1,203 @@
+import "./media.css";
+
+const imageInput = document.querySelector("#image-input");
+const dropZone = document.querySelector("#drop-zone");
+const previewFrame = document.querySelector("#preview-frame");
+const imagePreview = document.querySelector("#image-preview");
+const fileInfo = document.querySelector("#file-info");
+const fileName = document.querySelector("#file-name");
+const fileSize = document.querySelector("#file-size");
+const fileType = document.querySelector("#file-type");
+const analyzeButton = document.querySelector("#analyze-button");
+const clearButton = document.querySelector("#clear-button");
+const sessionStatus = document.querySelector("#session-status");
+const resultState = document.querySelector("#result-state");
+const aiScore = document.querySelector("#ai-score");
+const scoreLabel = document.querySelector("#score-label");
+const scoreBar = document.querySelector("#score-bar");
+const detectorMessage = document.querySelector("#detector-message");
+
+// Keep this URL as the single integration point for the future detector backend.
+// Example expected response: { "ai_likelihood": 0.82 }
+const DETECTOR_ENDPOINT = "http://127.0.0.1:5000/api/analyze-image";
+
+let selectedFile = null;
+let previewUrl = null;
+
+function formatBytes(bytes) {
+  if (bytes < 1024) return `${bytes} B`;
+  if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB`;
+  return `${(bytes / (1024 * 1024)).toFixed(2)} MB`;
+}
+
+function setStatus(text) {
+  sessionStatus.textContent = `● ${text}`;
+}
+
+function resetResult() {
+  resultState.textContent = "NOT ANALYZED";
+  aiScore.textContent = "—";
+  scoreLabel.textContent = "Waiting for an image.";
+  scoreBar.style.width = "0%";
+  detectorMessage.textContent =
+    "Detector connection is not configured yet. No score is being invented or simulated.";
+}
+
+function setFile(file) {
+  if (!file) return;
+
+  if (!file.type.startsWith("image/")) {
+    setStatus("IMAGE REQUIRED");
+    detectorMessage.textContent = "Please select a valid image file.";
+    return;
+  }
+
+  selectedFile = file;
+
+  if (previewUrl) URL.revokeObjectURL(previewUrl);
+  previewUrl = URL.createObjectURL(file);
+
+  imagePreview.src = previewUrl;
+  imagePreview.hidden = false;
+  previewFrame.classList.remove("empty");
+
+  fileName.textContent = file.name;
+  fileSize.textContent = formatBytes(file.size);
+  fileType.textContent = file.type || "Unknown";
+  fileInfo.hidden = false;
+
+  analyzeButton.disabled = false;
+  clearButton.hidden = false;
+  setStatus("IMAGE READY");
+  resultState.textContent = "READY";
+  aiScore.textContent = "—";
+  scoreLabel.textContent = "Ready for detector analysis.";
+  scoreBar.style.width = "0%";
+  detectorMessage.textContent =
+    "Image selected. The next step is to send it to the configured detector.";
+}
+
+function clearFile() {
+  selectedFile = null;
+  imageInput.value = "";
+
+  if (previewUrl) {
+    URL.revokeObjectURL(previewUrl);
+    previewUrl = null;
+  }
+
+  imagePreview.src = "";
+  imagePreview.hidden = true;
+  previewFrame.classList.add("empty");
+  fileInfo.hidden = true;
+  analyzeButton.disabled = true;
+  clearButton.hidden = true;
+  setStatus("READY");
+  resetResult();
+}
+
+function classifyScore(score) {
+  if (score < 30) {
+    return {
+      state: "LIKELY HUMAN-CREATED",
+      label: "Detector evidence is relatively weak for AI generation.",
+    };
+  }
+
+  if (score < 70) {
+    return {
+      state: "INCONCLUSIVE",
+      label: "Detector evidence is ambiguous.",
+    };
+  }
+
+  return {
+    state: "LIKELY AI-GENERATED",
+    label: "Detector evidence is relatively strong for AI generation.",
+  };
+}
+
+function showScore(rawLikelihood) {
+  const likelihood = Number(rawLikelihood);
+  if (!Number.isFinite(likelihood)) throw new Error("Detector returned an invalid score.");
+
+  // Accept either 0–1 or 0–100 from the backend.
+  const score = likelihood <= 1 ? likelihood * 100 : likelihood;
+  if (score < 0 || score > 100) throw new Error("Detector score is outside the 0–100 range.");
+
+  const rounded = Math.round(score);
+  const interpretation = classifyScore(rounded);
+
+  aiScore.textContent = `${rounded}%`;
+  scoreLabel.textContent = interpretation.label;
+  resultState.textContent = interpretation.state;
+  scoreBar.style.width = `${rounded}%`;
+  detectorMessage.textContent =
+    "This score is a detector likelihood, not proof of image origin or truth.";
+}
+
+async function analyzeImage() {
+  if (!selectedFile) return;
+
+  analyzeButton.disabled = true;
+  setStatus("ANALYZING");
+  resultState.textContent = "ANALYZING";
+  aiScore.textContent = "…";
+  scoreLabel.textContent = "Sending image to detector.";
+  scoreBar.style.width = "0%";
+  detectorMessage.textContent = "Waiting for detector response…";
+
+  try {
+    const formData = new FormData();
+    formData.append("image", selectedFile);
+
+    const response = await fetch(DETECTOR_ENDPOINT, {
+      method: "POST",
+      body: formData,
+    });
+
+    if (!response.ok) {
+      throw new Error(`Detector returned HTTP ${response.status}.`);
+    }
+
+    const data = await response.json();
+    showScore(data.ai_likelihood);
+    setStatus("ANALYSIS COMPLETE");
+  } catch (error) {
+    resultState.textContent = "DETECTOR UNAVAILABLE";
+    aiScore.textContent = "—";
+    scoreLabel.textContent = "No verified score returned.";
+    scoreBar.style.width = "0%";
+    detectorMessage.textContent =
+      `${error.message} No score is displayed because the detector response was not verified.`;
+    setStatus("DETECTOR OFFLINE");
+  } finally {
+    analyzeButton.disabled = false;
+  }
+}
+
+imageInput.addEventListener("change", (event) => {
+  setFile(event.target.files?.[0]);
+});
+
+dropZone.addEventListener("dragover", (event) => {
+  event.preventDefault();
+  dropZone.classList.add("dragging");
+});
+
+dropZone.addEventListener("dragleave", () => {
+  dropZone.classList.remove("dragging");
+});
+
+dropZone.addEventListener("drop", (event) => {
+  event.preventDefault();
+  dropZone.classList.remove("dragging");
+  setFile(event.dataTransfer.files?.[0]);
+});
+
+analyzeButton.addEventListener("click", analyzeImage);
+clearButton.addEventListener("click", clearFile);
+
+window.addEventListener("beforeunload", () => {
+  if (previewUrl) URL.revokeObjectURL(previewUrl);
+});

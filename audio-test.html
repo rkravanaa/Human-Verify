@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Human Verify — audio challenge-response verification."
+    />
+    <title>Human Verify — Audio Response</title>
+  </head>
+
+  <body>
+    <header class="audio-navbar">
+      <a href="./verify.html" class="audio-logo">HUMAN VERIFY</a>
+      <a href="./verify.html" class="back-link">← Back to verification</a>
+    </header>
+
+    <main class="audio-page">
+      <section class="audio-intro">
+        <p class="eyebrow">AUDIO RESPONSE</p>
+
+        <h1>
+          Read the phrase.
+          <span>Prove your presence.</span>
+        </h1>
+
+        <p>
+          A randomized phrase is displayed for each session. Read it aloud
+          before the countdown ends.
+        </p>
+      </section>
+
+      <section class="audio-panel">
+        <div class="panel-top">
+          <span>VOICE VERIFICATION SESSION</span>
+          <span id="session-status">● READY</span>
+        </div>
+
+        <div class="audio-stage">
+          <div class="phrase-area">
+            <div class="phrase-label">CURRENT PHRASE</div>
+
+            <div id="phrase" class="phrase">
+              Press start to begin.
+            </div>
+
+            <div class="countdown">
+              <span id="countdown">9</span>
+              <span>SEC</span>
+            </div>
+
+            <div id="instruction" class="instruction">
+              Read the displayed phrase aloud.
+            </div>
+          </div>
+
+          <aside class="audio-info">
+            <div class="audio-step">
+              <span>01</span>
+              <div>
+                <strong>Challenge</strong>
+                <small id="challenge-status">Waiting to start</small>
+              </div>
+            </div>
+
+            <div class="audio-step">
+              <span>02</span>
+              <div>
+                <strong>Speech</strong>
+                <small id="speech-status">Waiting for microphone</small>
+              </div>
+            </div>
+
+            <div class="audio-step">
+              <span>03</span>
+              <div>
+                <strong>Voice signal</strong>
+                <small id="signal-status">No signal measured</small>
+              </div>
+            </div>
+
+            <div class="signal-box">
+              <div class="signal-header">
+                <span>VOICE SIGNAL</span>
+                <span id="signal-level">—</span>
+              </div>
+
+              <div class="signal-track">
+                <div id="signal-bar"></div>
+              </div>
+            </div>
+
+            <div class="result-box">
+              <div class="result-label">RESULT</div>
+              <div id="result">Verification has not started.</div>
+            </div>
+
+            <button id="start-button" class="primary-button">
+              Start audio test →
+            </button>
+
+            <button id="retry-button" class="secondary-button" hidden>
+              Try again
+            </button>
+          </aside>
+        </div>
+      </section>
+
+      <section class="audio-analysis">
+        <div class="analysis-heading">
+          <p class="eyebrow">RECORDED SAMPLE</p>
+          <h2>Audio characteristics.</h2>
+          <p>
+            The recorded sample is measured locally in the browser. These
+            measurements are evidence signals for the MVP, not a human/AI
+            classification.
+          </p>
+        </div>
+
+        <div class="characteristics-card">
+          <div class="analysis-title">AUDIO CHARACTERISTICS</div>
+
+          <div class="metrics-grid">
+            <div class="metric">
+              <span>Duration</span>
+              <strong id="metric-duration">—</strong>
+            </div>
+
+            <div class="metric">
+              <span>Sample rate</span>
+              <strong id="metric-sample-rate">—</strong>
+            </div>
+
+            <div class="metric">
+              <span>Samples</span>
+              <strong id="metric-samples">—</strong>
+            </div>
+
+            <div class="metric">
+              <span>RMS energy</span>
+              <strong id="metric-rms">—</strong>
+            </div>
+
+            <div class="metric">
+              <span>Peak amplitude</span>
+              <strong id="metric-peak">—</strong>
+            </div>
+
+            <div class="metric">
+              <span>Zero crossings</span>
+              <strong id="metric-zero-crossings">—</strong>
+            </div>
+          </div>
+
+          <div class="spectrum-heading">FREQUENCY SPECTRUM</div>
+
+          <canvas
+            id="spectrum-canvas"
+            class="spectrum-canvas"
+            width="1200"
+            height="360"
+          ></canvas>
+
+          <audio
+            id="recorded-audio"
+            class="recorded-audio"
+            controls
+          ></audio>
+
+          <div id="analysis-status" class="analysis-status">
+            No audio sample analyzed yet.
+          </div>
+        </div>
+      </section>
+
+      <section class="audio-note">
+        <span>01</span>
+        <p>
+          The MVP combines randomized speech challenge-response with basic
+          acoustic measurements. Pitch, amplitude, frequency and speech
+          matching should be treated as signals, not as proof of identity or
+          proof that a voice is human-generated.
+        </p>
+      </section>
+    </main>
+
+    <footer class="audio-footer">
+      <span>HUMAN VERIFY</span>
+      <span>Audio response layer</span>
+    </footer>
+
+    <script type="module" src="./src/features/audio/audio.js"></script>
+  </body>
+</html>

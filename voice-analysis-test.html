@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+
+  <title>Human Verify — Audio Analysis</title>
+</head>
+
+<body>
+
+  <main class="analysis-page">
+
+    <section class="analysis-card">
+
+      <div class="analysis-header">
+        <span>HUMAN VERIFY</span>
+        <span>AUDIO ANALYSIS</span>
+      </div>
+
+      <div class="analysis-content">
+
+        <div class="eyebrow">
+          VOICE SIGNAL ANALYSIS
+        </div>
+
+        <h1>
+          Inspect your voice.
+        </h1>
+
+        <p class="description">
+          Record a short voice sample and inspect its
+          basic acoustic properties before applying
+          spoof-detection models.
+        </p>
+
+
+        <div class="record-section">
+
+          <div class="section-label">
+            RECORD SAMPLE
+          </div>
+
+          <div
+            id="record-status"
+            class="record-status"
+          >
+            Ready to record.
+          </div>
+
+          <div
+            id="record-time"
+            class="record-time"
+          >
+            00:00
+          </div>
+
+          <button
+            id="record-button"
+            class="primary-button"
+            type="button"
+          >
+            Record 5 seconds
+            <span>→</span>
+          </button>
+
+        </div>
+
+
+        <div
+          id="analysis-section"
+          class="analysis-section"
+        >
+
+          <div class="section-label">
+            AUDIO CHARACTERISTICS
+          </div>
+
+
+          <div class="metrics-grid">
+
+            <div class="metric">
+              <span>Duration</span>
+              <strong id="duration">
+                —
+              </strong>
+            </div>
+
+            <div class="metric">
+              <span>Sample rate</span>
+              <strong id="sample-rate">
+                —
+              </strong>
+            </div>
+
+            <div class="metric">
+              <span>Samples</span>
+              <strong id="sample-count">
+                —
+              </strong>
+            </div>
+
+            <div class="metric">
+              <span>RMS energy</span>
+              <strong id="rms">
+                —
+              </strong>
+            </div>
+
+            <div class="metric">
+              <span>Peak amplitude</span>
+              <strong id="peak">
+                —
+              </strong>
+            </div>
+
+            <div class="metric">
+              <span>Zero crossings</span>
+              <strong id="zero-crossings">
+                —
+              </strong>
+            </div>
+
+          </div>
+
+
+          <div class="spectrum-section">
+
+            <div class="section-label">
+              FREQUENCY SPECTRUM
+            </div>
+
+            <canvas
+              id="spectrum-canvas"
+              width="800"
+              height="220"
+            ></canvas>
+
+          </div>
+
+
+          <audio
+            id="audio-player"
+            controls
+            class="audio-player"
+          ></audio>
+
+
+          <div
+            id="analysis-result"
+            class="analysis-result"
+          >
+            No audio sample analyzed yet.
+          </div>
+
+        </div>
+
+
+        <div class="technical-note">
+          This is an acoustic analysis test. It does not
+          determine whether a voice is human, synthetic,
+          or replayed.
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <script
+    type="module"
+    src="/src/features/voice/audio-analysis.js"
+  ></script>
+
+</body>
+
+</html>

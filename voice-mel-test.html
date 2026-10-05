@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+
+  <title>Human Verify — Log-Mel Analysis</title>
+</head>
+
+<body>
+
+  <main class="mel-page">
+
+    <section class="mel-card">
+
+      <div class="mel-header">
+        <span>HUMAN VERIFY</span>
+        <span>LOG-MEL ANALYSIS</span>
+      </div>
+
+      <div class="mel-content">
+
+        <div class="eyebrow">
+          MACHINE LEARNING AUDIO REPRESENTATION
+        </div>
+
+        <h1>
+          Visualize your voice.
+        </h1>
+
+        <p class="description">
+          Convert a short voice recording into a
+          log-mel spectrogram, a common representation
+          used by speech and audio machine-learning systems.
+        </p>
+
+        <div class="record-box">
+
+          <div class="section-label">
+            RECORD SAMPLE
+          </div>
+
+          <div
+            id="record-status"
+            class="record-status"
+          >
+            Ready to record.
+          </div>
+
+          <div
+            id="record-time"
+            class="record-time"
+          >
+            00:00
+          </div>
+
+          <button
+            id="record-button"
+            class="primary-button"
+            type="button"
+          >
+            Record 5 seconds
+            <span>→</span>
+          </button>
+
+        </div>
+
+        <div class="spectrogram-box">
+
+          <div class="spectrogram-header">
+
+            <div class="section-label">
+              LOG-MEL SPECTROGRAM
+            </div>
+
+            <div
+              id="analysis-status"
+              class="analysis-status"
+            >
+              WAITING
+            </div>
+
+          </div>
+
+          <canvas
+            id="mel-canvas"
+            width="900"
+            height="420"
+          ></canvas>
+
+          <div class="axis-labels">
+
+            <span>
+              HIGH FREQUENCY
+            </span>
+
+            <span>
+              TIME →
+            </span>
+
+            <span>
+              LOW FREQUENCY
+            </span>
+
+          </div>
+
+        </div>
+
+        <div class="metrics">
+
+          <div class="metric">
+            <span>Sample rate</span>
+            <strong id="sample-rate">
+              —
+            </strong>
+          </div>
+
+          <div class="metric">
+            <span>Duration</span>
+            <strong id="duration">
+              —
+            </strong>
+          </div>
+
+          <div class="metric">
+            <span>Mel bands</span>
+            <strong id="mel-bands">
+              —
+            </strong>
+          </div>
+
+          <div class="metric">
+            <span>FFT size</span>
+            <strong id="fft-size">
+              —
+            </strong>
+          </div>
+
+        </div>
+
+        <audio
+          id="audio-player"
+          controls
+          class="audio-player"
+        ></audio>
+
+        <div
+          id="analysis-result"
+          class="analysis-result"
+        >
+          No audio sample analyzed yet.
+        </div>
+
+        <div class="technical-note">
+          This visualization is an audio representation
+          for machine-learning research. It does not
+          determine whether a voice is human or synthetic.
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <script
+    type="module"
+    src="/src/features/voice/log-mel.js"
+  ></script>
+
+</body>
+
+</html>

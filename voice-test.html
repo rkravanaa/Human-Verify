@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+
+    <meta
+      name="description"
+      content="Human Verify — isolated voice verification test"
+    />
+
+    <title>Human Verify — Voice Test</title>
+  </head>
+
+  <body>
+    <main class="voice-test-page">
+
+      <section class="voice-card">
+
+        <div class="voice-header">
+          <span>HUMAN VERIFY</span>
+          <span class="test-label">VOICE TEST</span>
+        </div>
+
+        <div class="voice-content">
+
+          <div class="eyebrow">
+            VOICE CHALLENGE
+          </div>
+
+          <h1>
+            Verify your voice.
+          </h1>
+
+          <p class="description">
+            Speak a randomly generated phrase to complete
+            the voice challenge.
+          </p>
+
+          <div class="challenge-box">
+
+            <div class="challenge-label">
+              SAY THIS PHRASE
+            </div>
+
+            <div
+              id="voice-phrase"
+              class="voice-phrase"
+            >
+              Press start to begin
+            </div>
+
+            <div class="voice-timer">
+
+              <span id="voice-countdown">
+                7
+              </span>
+
+              <span>
+                SEC
+              </span>
+
+            </div>
+
+            <div
+              id="voice-status"
+              class="voice-status"
+            >
+              READY
+            </div>
+
+            <div
+              id="voice-result"
+              class="voice-result"
+            >
+              Voice verification has not started.
+            </div>
+
+          </div>
+
+          <button
+            type="button"
+            id="voice-button"
+            class="voice-button"
+          >
+            Start voice challenge
+            <span>→</span>
+          </button>
+
+          <div class="technical-note">
+            This test checks whether the spoken response
+            matches the displayed challenge.
+          </div>
+
+        </div>
+
+      </section>
+
+    </main>
+
+    <script
+      type="module"
+      src="/src/features/voice/voice.js"
+    ></script>
+  </body>
+</html>
