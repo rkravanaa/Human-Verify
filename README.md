@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="docs/images/hero.png" alt="HUMAN VERIFY" width="850">
+</p>
+
 ## Why Human Verify?
 
 AI has changed what can be trusted online.
@@ -133,6 +137,7 @@ Advanced synthetic-voice detection is part of the future roadmap.
 03 — Media Analysis
 Is this image AI-generated?
 The Media Analysis module allows users to upload an image and obtain an AI-generation likelihood from an external detection service.
+
 <p align="center">
   <img src="docs/images/media-analysis-result.png" alt="Human Verify media analysis result" width="850">
 </p>
