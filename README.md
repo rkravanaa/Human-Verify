@@ -541,16 +541,9 @@ They should not be interpreted as absolute proof of:
 - Legitimacy
 - Absence of fraud
 Production deployments require appropriate security, privacy, legal, compliance and performance validation.
-Human Verify
-Verify presence.
-Analyze signals.
-Build trust through evidence.
 
-One correction from the earlier version: I used your actual current image names from the screenshot, so you do not need to rename anything.
+# Human Verify
 
-The seven README references are:
-
-```text
-docs/images/hero.png
-docs/images/problem.png
-docs/images/architecture.png
+- **Verify presence.**
+- **Analyze signals.**
+- **Build trust through evidence.**
